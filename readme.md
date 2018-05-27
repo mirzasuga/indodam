@@ -11,8 +11,7 @@ Fitur pada Aplikasi ini meliputi :
     - Google Recapcha Login Form
     - Ganti Password
     - Reset Password
-    V2
-    - Registrasi Guest User (Referal Mode)
+    - Registrasi Guest User (Referal Mode) V2
 2. Hak Akses User
     - Hak Akses Member
     - Hak Akses Admin
