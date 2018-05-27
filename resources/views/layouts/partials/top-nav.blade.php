@@ -26,6 +26,7 @@
             <ul class="nav navbar-nav navbar-right">
                 <!-- Authentication Links -->
                 @guest
+                    <li><a href="{{ route('guest.register') }}">Register</a></li>
                     <li><a href="{{ route('login') }}">Login</a></li>
                 @else
                     <li>{{ link_to_route('profile.show', __('auth.profile'), [auth()->user()]) }}</li>
