@@ -27,6 +27,7 @@ class MembersController extends Controller
 
     public function store(CreateMember $createMemberForm, User $user)
     {
+        //die('ok');
         $createMemberForm->approve();
 
         flash(trans('user.created'), 'success');

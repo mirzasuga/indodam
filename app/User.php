@@ -5,6 +5,7 @@ namespace App;
 use App\Package;
 use App\Transaction;
 use App\User;
+use App\Wallet;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
@@ -137,5 +138,11 @@ class User extends Authenticatable
         Transaction::create($newTransactionData);
 
         return $this;
+    }
+    public function wallet() {
+        return $this->hasOne(Wallet::class, 'member_id');
+    }
+    public function getUserByUsername($username) {
+        return $this->where('username',$username)->first();
     }
 }

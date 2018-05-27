@@ -32,6 +32,18 @@ Route::post('password/reset', 'Auth\ResetPasswordController@reset');
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+/**
+ * Guest Routes
+ */
+Route::get('register', [
+    'as' => 'guest.register',
+    'uses' => 'GuestController@index'
+]);
+Route::post('register', [
+    'as' => 'guest.post_register',
+    'uses' => 'GuestController@create'
+]);
+
 Route::group(['middleware' => 'auth'], function () {
     /**
      * User Transactions Routes
@@ -55,6 +67,15 @@ Route::group(['middleware' => 'auth'], function () {
      * User Profile Page
      */
     Route::get('profile/{user}', 'ProfileController@show')->name('profile.show');
+
+    /**
+     * Wallet Routes
+     */
+    Route::get('wallet',[
+        'as' => 'wallet.index',
+        'uses' => 'WalletController@index'
+    ]);
+    
 });
 Route::group(['middleware' => 'role:1'], function () {
     /**

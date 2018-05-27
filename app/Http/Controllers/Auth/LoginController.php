@@ -52,13 +52,13 @@ class LoginController extends Controller
             'password'        => 'required|string',
         ];
 
-        if (!app()->runningUnitTests()) {
-            $rules['g-recaptcha-response'] = ['required', new Recaptcha()];
-        }
+        // if (!app()->runningUnitTests()) {
+        //     $rules['g-recaptcha-response'] = ['required', new Recaptcha()];
+        // }
 
-        $request->validate($rules, [
-            'g-recaptcha-response.required' => 'Pastikan anda bukan robot.',
-        ]);
+        // $request->validate($rules, [
+        //     'g-recaptcha-response.required' => 'Pastikan anda bukan robot.',
+        // ]);
     }
 
     /**
