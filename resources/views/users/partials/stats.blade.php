@@ -4,13 +4,13 @@
             <td class="col-xs-2 text-center">{{ trans('user.wallet') }}</td>
             <td class="col-xs-2 text-center">{{ trans('user.wallet_edinar') }}</td>
             <td class="col-xs-2 text-center">{{ trans('app.status') }}</td>
-            <td class="col-xs-2 text-center">{{ trans('user.role') }}</td>
+            <td class="col-xs-2 text-center">Mining</td>
         </tr>
         <tr>
             <td class="text-center lead" style="border-top: none;">{{ $user->wallet }}</td>
             <td class="text-center lead" style="border-top: none;">{{ $user->wallet_edinar }}</td>
             <td class="text-center lead" style="border-top: none;">{{ $user->status }}</td>
-            <td class="text-center lead" style="border-top: none;">{{ $user->role }}</td>
+            <td id="counter" class="text-center lead" style="border-top: none;"></td>
         </tr>
     </table>
 </div>
@@ -26,3 +26,27 @@
     <strong>{{ trans('user.notes') }}</strong><br>{!! nl2br($user->notes) !!}
 </div>
 @endif
+
+<script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+<script>
+let dam = "{{ $user->wallet }}";
+    let mining = (dam * 0.5) / 100;
+    let counter = mining / 86400;
+    let n = new Date();
+    n.getHours();
+    let nd = (n.getHours() * 3600) + (n.getMinutes() * 60);
+    let res = nd * counter;
+    let fresult = res;
+    $("#counter").html(fresult);
+$(document).ready(function() {
+    
+    
+    setInterval(() => {
+        fresult += counter;
+        $("#counter").html(fresult);
+    },1000);
+});
+</script>
