@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\RegisterRequest;
+use App\Rules\Recaptcha;
 
 class GuestController extends Controller
 {
@@ -16,7 +17,15 @@ class GuestController extends Controller
     }
 
     public function create(RegisterRequest $registerRequest) {
-        $registerRequest->validateRegister();
+        $rules = $registerRequest->rules();
+        // $registerRequest->validateRegister();
+        
+        if (!app()->runningUnitTests()) {
+            $rules['g-recaptcha-response'] = ['required', new Recaptcha()];
+        }
+
+        $registerRequest->validate($rules);
+
         $premember = $registerRequest->approve();
         
         session()->flash('flash_notification',[

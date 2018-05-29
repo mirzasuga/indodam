@@ -57,6 +57,7 @@ class TransactionsController extends Controller
                 'sender_id'   => 0, // INDODAM System
                 'creator_id'  => auth()->id(),
                 'description' => $depositData['description'],
+                'notes'       => 'sent_by_system'
             ]
         );
 

@@ -34,20 +34,21 @@ class RegisterRequest extends FormRequest
             'password'        => 'required|between:5,15|same:password_confirm',
             'password_confirm'=> 'required|between:5,15',
             'referal'         => 'nullable|min:5|max:60',
+            'g-recaptcha-response' => 'required'
         ];
     }
     public function validateRegister() {
         
         $rules = $this->rules();
 
-        // if (!app()->runningUnitTests()) {
-        //     $rules['g-recaptcha-response'] = ['required', new Recaptcha()];
-        // }
-
-        // $request->validate($rules, [
-        //     'g-recaptcha-response.required' => 'Pastikan anda bukan robot.',
-        // ]);
+        
         $this->validate($rules);
+    }
+
+    public function messages() {
+        return [
+            'g-recaptcha-response.required' => 'Pastikan anda bukan robot.',
+        ];
     }
     public function approve() {
         // $newUserData = $this->validated();
