@@ -4,8 +4,11 @@ namespace App\Listeners;
 
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Support\Facades\Mail;
 
 use App\Services\WalletService;
+
+use App\Mail\RegisteredUser as MailRegisteredUser;
 
 class PrememberRegisteredListener
 {
@@ -29,5 +32,7 @@ class PrememberRegisteredListener
     {
         $premember = $event->premember;
         WalletService::initialize( $premember );
+        Mail::to( $premember->email )
+            ->send( new MailRegisteredUser( $premember ) );
     }
 }
