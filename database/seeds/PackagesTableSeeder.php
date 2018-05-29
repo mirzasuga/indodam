@@ -13,6 +13,12 @@ class PackagesTableSeeder extends Seeder
     public function run()
     {
         Package::create([
+            'name'       => 'Pre Member',
+            'price'      => '0',
+            'wallet'     => '0',
+            'creator_id' => 1,
+        ]);
+        Package::create([
             'name'       => 'Basic',
             'price'      => '1000000',
             'wallet'     => '200',
