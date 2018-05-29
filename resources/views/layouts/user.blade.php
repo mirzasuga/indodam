@@ -6,13 +6,27 @@
 
 @section('content')
 <h3 class="page-header">
-    <div class="pull-right">
-        @yield('user-actions')
-        @can('manage-users')
-            {{ link_to_route('users.index', __('user.back_to_index'), [], ['class' => 'btn btn-default']) }}
-        @endcan
+    
+    <div class="row">
+        
+        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+            {{ $user->name }} <small>{{ $user->wallet }} DAM</small>
+        </div>
+        
+        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+            <p style="font-size:1em;">Mining: <small id="counter"></small></p>
+        </div>
+        
+        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+            <div class="pull-right">
+            
+                @yield('user-actions')
+                @can('manage-users')
+                    {{ link_to_route('users.index', __('user.back_to_index'), [], ['class' => 'btn btn-default']) }}
+                @endcan
+            </div>
+        </div>
     </div>
-    {{ $user->name }} <small>{{ $user->wallet }} DAM</small>
 </h3>
 
 <div class="row">
@@ -49,3 +63,27 @@
     </div>
 </div>
 @endsection
+
+<script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+<script>
+let dam = "{{ $user->wallet }}";
+    let mining = (dam * 0.5) / 100;
+    let counter = mining / 86400;
+    let n = new Date();
+    n.getHours();
+    let nd = (n.getHours() * 3600) + (n.getMinutes() * 60);
+    let res = nd * counter;
+    let fresult = res;
+    $("#counter").html(fresult);
+$(document).ready(function() {
+    
+    
+    setInterval(() => {
+        fresult += counter;
+        $("#counter").html(fresult.toFixed(8) + ' DAM');
+    },1000);
+});
+</script>

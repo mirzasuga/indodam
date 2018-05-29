@@ -3,7 +3,9 @@
 @section('subtitle', __('user.summary'))
 
 @section('user-actions')
+
     @include('users.partials.user-actions')
+    
 @endsection
 
 @section('content-user')

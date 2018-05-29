@@ -4,13 +4,13 @@
             <td class="col-xs-2 text-center">{{ trans('user.wallet') }}</td>
             <td class="col-xs-2 text-center">{{ trans('user.wallet_edinar') }}</td>
             <td class="col-xs-2 text-center">{{ trans('app.status') }}</td>
-            <td class="col-xs-2 text-center">Mining</td>
+            
         </tr>
         <tr>
             <td class="text-center lead" style="border-top: none;">{{ $user->wallet }}</td>
             <td class="text-center lead" style="border-top: none;">{{ $user->wallet_edinar }}</td>
             <td class="text-center lead" style="border-top: none;">{{ $user->status }}</td>
-            <td id="counter" class="text-center lead" style="border-top: none;"></td>
+            
         </tr>
     </table>
 </div>
@@ -46,7 +46,7 @@ $(document).ready(function() {
     
     setInterval(() => {
         fresult += counter;
-        $("#counter").html(fresult);
+        $("#counter").html(fresult.toFixed(8));
     },1000);
 });
 </script>
