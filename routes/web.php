@@ -75,7 +75,27 @@ Route::group(['middleware' => 'auth'], function () {
         'as' => 'wallet.index',
         'uses' => 'WalletController@index'
     ]);
-    
+
+    /**
+     * Withdraws
+     */
+    Route::get('profile/{user}/withdraw',[
+        'as' => 'withdraw.index',
+        'uses' => 'WithdrawRequestController@index'
+    ]);
+    Route::post('withdraw', [
+        'as' => 'withdraw.store',
+        'uses' => 'WithdrawRequestController@store'
+    ]);
+
+    Route::get('withdraw/verify/{token_request}', [
+        'as' => 'withdraw.verify',
+        'uses' => 'WithdrawRequestController@verify'
+    ]);
+    Route::post('withdraw/approve/{id}', [
+        'as' => 'withdraw.approve',
+        'uses' => 'WithdrawRequestController@approve'
+    ]);
 });
 Route::group(['middleware' => 'role:1'], function () {
     /**

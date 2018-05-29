@@ -19,6 +19,9 @@ class EventServiceProvider extends ServiceProvider
         'App\Events\PrememberRegisteredEvent' => [
             'App\Listeners\PrememberRegisteredListener'
         ],
+        'App\Events\Withdraw\WithdrawRequestedEvent' => [
+            'App\Listeners\Withdraw\WithdrawRequestedListener'
+        ],
     ];
 
     /**

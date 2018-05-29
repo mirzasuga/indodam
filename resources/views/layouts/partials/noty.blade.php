@@ -11,7 +11,7 @@
         type: '{{ $level }}',
         layout: 'bottomRight',
         text: '{{ Session::get('flash_notification.message') }}',
-        timeout: 3000
+        timeout: 4000
     });
 </script>
 @endif

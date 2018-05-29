@@ -6,6 +6,7 @@ use App\Package;
 use App\Transaction;
 use App\User;
 use App\Wallet;
+use App\withdrawRequest;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
@@ -152,5 +153,21 @@ class User extends Authenticatable
             
         }
         return false;
+    }
+    public function withdrawRequest() {
+        return $this->hasMany(WithdrawRequest::class,'user_id');
+    }
+    public function hasEnoughCoin( $withdrawAmount ) {
+        $wallet = $this->wallet()->first();
+        $totalWithdraw = $withdrawAmount;
+
+        $allWithdraw = $this->withdrawRequest()->active()->get();
+
+        foreach($allWithdraw as $withdrawRequest) {
+
+            $totalWithdraw += $withdrawRequest->amount;
+
+        }
+        return $wallet->balance_dam > $totalWithdraw;
     }
 }
