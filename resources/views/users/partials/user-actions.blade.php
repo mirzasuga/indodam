@@ -36,3 +36,16 @@
         ) !!}
     @endif
 @endcan
+
+@can('should-upgrade', $user)
+
+    {{ 
+        link_to_route(
+            'profile.members.create',
+            __('member.upgrade'),
+            [$user],
+            ['class' => 'btn btn-danger', 'id' => 'add-member-'.$user->id ]
+        )
+    }}
+    
+@endcan

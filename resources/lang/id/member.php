@@ -6,4 +6,5 @@ return [
 
     // Actions
     'create' => 'Tambah Member',
+    'upgrade' => 'Upgrade Package'
 ];

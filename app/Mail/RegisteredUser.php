@@ -35,7 +35,7 @@ class RegisteredUser extends Mailable
         $user       = $this->user;
 
         return $this
-        ->from(env('MAIL_FROM_NAME'))
+        ->from("support@indodam.com")
         ->markdown( $template )
         ->with([
             'name' => $user->name,

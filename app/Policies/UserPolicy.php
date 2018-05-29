@@ -165,4 +165,7 @@ class UserPolicy
     {
         return $authUser->isAdmin() || $authUser->id == $userObject->id;
     }
+    public function shouldUpgrade(User $authUser) {
+        return $authUser->isFreePackage();
+    }
 }

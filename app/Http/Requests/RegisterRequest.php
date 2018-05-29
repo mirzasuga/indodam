@@ -87,7 +87,7 @@ class RegisterRequest extends FormRequest
                 'phone' => $prememberData['phone'],
                 'wallet' => 0,
                 'wallet_edinar' => 0,
-                'package_id' => 4, //as premember
+                'package_id' => 0, //as free member
                 'role_id' => 2, //ass member
                 'sponsor_id' => $sponsor_id,
                 'city' => '',

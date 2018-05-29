@@ -145,4 +145,12 @@ class User extends Authenticatable
     public function getUserByUsername($username) {
         return $this->where('username',$username)->first();
     }
+    public function isFreePackage() {
+        if( $this->package()->first() !== null ) {
+
+            return $this->package()->first()->id === 0;
+            
+        }
+        return false;
+    }
 }
