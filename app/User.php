@@ -6,7 +6,7 @@ use App\Package;
 use App\Transaction;
 use App\User;
 use App\Wallet;
-use App\withdrawRequest;
+use App\WithdrawRequest;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
