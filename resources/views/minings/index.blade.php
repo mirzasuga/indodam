@@ -7,9 +7,19 @@
 @endsection
 
 @section('content-user')
-    @if($mining->started_at === '')
+
+    @if(empty($mining->started_mining))
         @include('minings.partials.create')
     @else
-        @include('minings.partials.stats')
+    
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            @include('minings.partials.stats')
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="margin-top:30px;">
+            @include('minings.partials.increase-power')
+        </div>
+    </div>
     @endif
+    
 @endsection

@@ -108,6 +108,18 @@ Route::group(['middleware' => 'auth'], function () {
         'uses' => 'MiningController@store',
         'as' => 'mining.store'
     ]);
+    Route::get('mining/stop',[
+        'uses' => 'MiningController@stop',
+        'as' => 'mining.stop'
+    ]);
+    Route::post('mining/increase', [
+        'uses' => 'MiningController@increase',
+        'as'    => 'mining.increasePower'
+    ]);
+    Route::get('mining/grab-income/daily', [
+        'uses' => 'MiningController@dailyIncome',
+        'as'    => 'mining.dailyIncome'
+    ]);
 });
 Route::group(['middleware' => 'role:1'], function () {
     /**

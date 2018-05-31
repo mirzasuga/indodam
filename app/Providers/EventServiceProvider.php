@@ -22,6 +22,13 @@ class EventServiceProvider extends ServiceProvider
         'App\Events\Withdraw\WithdrawRequestedEvent' => [
             'App\Listeners\Withdraw\WithdrawRequestedListener'
         ],
+
+        /**
+         * MINING EVENTS
+         */
+        'App\Events\Mining\GrabedIncomeDaily' => [
+            'App\Listeners\Mining\GrabedIncomeDaily'
+        ],
     ];
 
     /**

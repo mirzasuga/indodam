@@ -3,7 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-
+use App\User;
 class MiningRequest extends FormRequest
 {
     /**
@@ -31,17 +31,14 @@ class MiningRequest extends FormRequest
         $this->validate($this->rules());
     }
     public function approve(User $user) {
+        $data = $this->validated();
         
         $miningUser = $user->mining()->first();
-        $miningUser->startMining( 100 )->save();
+        $miningUser->startMining( $data['mining_power'] )->save();
+
+        $user->wallet -= $data['mining_power'];
+        $user->save();
     }
 
-    public function validateStop() {
-        $this->validate([]);
-        $this->stop();
-    }
-    public function stop(User $user) {
-        $miningUser = $user->mining()->first();
-        $miningUser->stopMining()->save();
-    }
+    
 }

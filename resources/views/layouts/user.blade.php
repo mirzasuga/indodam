@@ -69,15 +69,18 @@
   integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
   crossorigin="anonymous"></script>
 <script>
-let dam = "{{ $user->wallet }}";
-    let mining = (dam * 0.5) / 100;
+    let miningPower = "{{ $user->mining->mining_balance }}";
+    let lastIncome = parseFloat("{{ $user->mining->mining_income }}");
+
+    let mining = (miningPower * 0.5) / 100;
     let counter = mining / 86400;
     let n = new Date();
     n.getHours();
     let nd = (n.getHours() * 3600) + (n.getMinutes() * 60);
     let res = nd * counter;
-    let fresult = res;
-    $("#counter").html(fresult);
+    let fresult = res + lastIncome;
+    console.log(typeof fresult);
+    $("#counter").html( fresult );
 $(document).ready(function() {
     
     

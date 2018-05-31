@@ -21,6 +21,15 @@ class TransactionType extends ReferenceAbstract
         'edinar_top_up'        => 'Top Up Edinar',
         'indodax_withdraw'     => 'Withdraw ke Indodax',
         'sharenview_payment'   => 'Bayar Iklan Sharenview',
+
+        'daily_income'         => 'Daily Mining Income',
+        'half_monthly_income'  => 'Half Monthly Mining Income',
+        'monthly_income'       => 'Monthly Mining Income',
+    ];
+    const LIST = [
+        'daily_income'         => 'Daily Mining Income',
+        'half_monthly_income'  => 'Half Monthly Mining Income',
+        'monthly_income'       => 'Monthly Mining Income'
     ];
 
     public static function getDepositTypeList()
