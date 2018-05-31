@@ -26,13 +26,13 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')
-        //          ->hourly();
+
         $schedule->job( new SwapMiningIncome(new Mining))->everyMinute();
+        $schedule->command('test:command')->everyMinute();
 
         dispatch(new SwapMiningIncome(new Mining));
     }
-
+//* * * * * /usr/bin/php-7.1 /home2/u11592hqh/domain/omojekom.com/dev.omojekom.com/web/artisan schedule:run >> /dev/null 2>&1
     /**
      * Register the commands for the application.
      *
