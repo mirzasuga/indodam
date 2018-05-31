@@ -30,7 +30,7 @@ class Kernel extends ConsoleKernel
         //          ->hourly();
         $schedule->job( new SwapMiningIncome(new Mining))->everyMinute();
 
-        //dispatch(new SwapMiningIncome(new Mining));
+        dispatch(new SwapMiningIncome(new Mining));
     }
 
     /**
