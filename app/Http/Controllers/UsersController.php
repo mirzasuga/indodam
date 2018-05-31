@@ -113,10 +113,15 @@ class UsersController extends Controller
         $walletData = $request->validate([
             'wallet_edinar' => 'required|numeric',
         ]);
-
-        $user->wallet_edinar = $walletData['wallet_edinar'];
-        $user->save();
-
+        
+        DB::beginTransaction();
+            $user->wallet_edinar = $walletData['wallet_edinar'];
+            $user->save();
+            
+            $userWallet = $user->wallet()->first();
+            $userWallet->balance_edinar = $walletData['wallet_edinar'];
+            $userWallet->save();
+        DB::commit();
         flash(__('user.wallet_updated'), 'success');
 
         return redirect()->route('profile.transactions.index', $user);

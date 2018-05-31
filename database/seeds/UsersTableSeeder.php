@@ -22,35 +22,5 @@ class UsersTableSeeder extends Seeder
             'is_active'  => 1, // 1:active, 0:in_active
             'sponsor_id' => 0,
         ]);
-
-
-
-        for($i=0; $i < 10; $i++) {
-
-            User::create([
-                'name' => '',
-                'email' => '',
-                'password' => '',
-                'role_id' => '',
-                'username' => '',
-                'phone' => '',
-                'wallet' => '',
-                'wallet_edinar' => '',
-                'username_edinar' => '',
-                'indodax_email' => '',
-                'referral_code' => '',
-                'package_id' => '',
-                'role_id' => '',
-                'sponsor_id' => '',
-                'city' => '',
-                'address' => '',
-                'cloud_start_date' => '',
-                'cloud_end_date' => '',
-                'notes' => '',
-                'data_brand_key' => '',
-                'cloud_link' => '',
-            ]);
-            
-        }
     }
 }

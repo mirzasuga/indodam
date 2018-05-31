@@ -58,6 +58,7 @@ class WithdrawRequest extends FormRequest
                 'amount'        => $amount,
                 'sender_ip'     => request()->ip(),
                 'user_id'       => $user->id,
+                'requested_at'  => new \DateTime(),
                 'verified_at'   => null,
                 'accepted_at'   => null,
                 'request_token' => $token,

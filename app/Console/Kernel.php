@@ -5,6 +5,8 @@ namespace App\Console;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
+use App\Mining;
+use App\Jobs\SwapMiningIncome;
 class Kernel extends ConsoleKernel
 {
     /**
@@ -26,6 +28,9 @@ class Kernel extends ConsoleKernel
     {
         // $schedule->command('inspire')
         //          ->hourly();
+        $schedule->job( new SwapMiningIncome(new Mining))->everyMinute();
+
+        //dispatch(new SwapMiningIncome(new Mining));
     }
 
     /**

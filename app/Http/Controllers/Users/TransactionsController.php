@@ -7,6 +7,8 @@ use App\Transaction;
 use App\TransactionType;
 use App\User;
 use Illuminate\Http\Request;
+use DB;
+use App\Wallet;
 
 class TransactionsController extends Controller
 {
@@ -48,19 +50,22 @@ class TransactionsController extends Controller
             'description'  => 'required|string|max:255',
             'double_check' => 'required|accepted',
         ]);
+        DB::beginTransaction();
+            $user->depositWallet(
+                $depositData['amount'],
+                $depositData['type'],
+                0,
+                [
+                    'sender_id'   => 0, // INDODAM System
+                    'creator_id'  => auth()->id(),
+                    'description' => $depositData['description'],
+                    'notes'       => 'sent_by_system'
+                ]
+            );
+            $walletUser = $user->wallet()->first();
+            $walletUser->incrementDam($depositData['amount'])->save();
 
-        $user->depositWallet(
-            $depositData['amount'],
-            $depositData['type'],
-            0,
-            [
-                'sender_id'   => 0, // INDODAM System
-                'creator_id'  => auth()->id(),
-                'description' => $depositData['description'],
-                'notes'       => 'sent_by_system'
-            ]
-        );
-
+        DB::commit();
         flash(__('transaction.deposit_success'), 'success');
 
         return redirect()->route('profile.transactions.index', $user);

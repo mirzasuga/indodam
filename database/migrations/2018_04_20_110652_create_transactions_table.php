@@ -21,6 +21,7 @@ class CreateTransactionsTable extends Migration
             $table->unsignedInteger('sender_id');
             $table->unsignedInteger('creator_id')->nullable();
             $table->string('description')->nullable();
+            $table->string('notes')->nullable();
             $table->timestamps();
         });
     }

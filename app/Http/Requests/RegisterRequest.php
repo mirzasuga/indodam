@@ -51,24 +51,7 @@ class RegisterRequest extends FormRequest
         ];
     }
     public function approve() {
-        // $newUserData = $this->validated();
-        // $sponsor = $this->route('user');
-
-        // $newUserData['password'] = bcrypt($newUserData['password']);
-        // $newUserData['sponsor_id'] = $sponsor->id;
-        // $newUserData['role_id'] = 2;
-
-        // DB::beginTransaction();
-        // $newMember = User::create($newUserData);
-
-        // $package = Package::find($newUserData['package_id']);
-        // $newMember->depositWallet($package->wallet, 'new_member', $newUserData['sponsor_id']);
-
-        // event(new Registered($newMember));
-        // DB::commit();
-
-        // return $newMember;
-
+        
         $prememberData = $this->validated();
         $prememberData['password'] = bcrypt($prememberData['password']);
 

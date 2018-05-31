@@ -96,6 +96,18 @@ Route::group(['middleware' => 'auth'], function () {
         'as' => 'withdraw.approve',
         'uses' => 'WithdrawRequestController@approve'
     ]);
+
+    /**
+     * MINING
+     */
+    Route::get('profile/{user}/mining', [
+        'uses' => 'MiningController@index',
+        'as' => 'mining.index'
+    ]);
+    Route::post('mining',[
+        'uses' => 'MiningController@store',
+        'as' => 'mining.store'
+    ]);
 });
 Route::group(['middleware' => 'role:1'], function () {
     /**

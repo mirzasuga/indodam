@@ -6,6 +6,7 @@ use App\Package;
 use App\Transaction;
 use App\User;
 use App\Wallet;
+use App\Mining;
 use App\WithdrawRequest;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -169,5 +170,8 @@ class User extends Authenticatable
 
         }
         return $wallet->balance_dam > $totalWithdraw;
+    }
+    public function mining() {
+        return $this->hasOne(Mining::class, 'member_id');
     }
 }

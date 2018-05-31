@@ -12,6 +12,9 @@
     <li class="{{ Request::segment(3) == 'withdraw' ? 'active' : '' }}">
         {!! link_to_route('withdraw.index', __('Withdraw'), [$user]) !!}
     </li>
+    <li class="{{ Request::segment(3) == 'mining' ? 'active' : '' }}">
+        {!! link_to_route('mining.index', __('Mining'), [$user]) !!}
+    </li>
     @can ('see-detail', $user)
         <li class="{{ Request::segment(3) == 'cloud-servers' ? 'active' : '' }}">
             {!! link_to_route('profile.cloud-servers.index', __('user.cloud_servers'), [$user]) !!}

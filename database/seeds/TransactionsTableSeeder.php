@@ -12,15 +12,15 @@ class TransactionsTableSeeder extends Seeder
      */
     public function run()
     {
-        $trans = Transaction::create([
-            'amount' => null,
-            'type' => null,
-            'receiver_id' => null,
-            'sender_id' => null,
-            'notes' => null,
-            'creator_id' => null,
-            'description' => null,
+        // $trans = Transaction::create([
+        //     'amount' => null,
+        //     'type' => null,
+        //     'receiver_id' => null,
+        //     'sender_id' => null,
+        //     'notes' => null,
+        //     'creator_id' => null,
+        //     'description' => null,
 
-        ]);
+        // ]);
     }
 }

@@ -20,7 +20,6 @@ class WalletService
         return Wallet::create([
             'balance_dam' => 0,
             'balance_edinar' => 0,
-            'balance_to_merge' => 0,
             'virtual_balance' => 0,
             'member_id' => $premember->id
         ]);
