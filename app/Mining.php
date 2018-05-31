@@ -9,6 +9,9 @@ use Carbon\Carbon;
 class Mining extends Wallet
 {
     const MIN_MINING_DAY = 30;
+    const MINING_PHASE_1 = 16;
+    const MINING_PHASE_2 = 17;
+
     const DAILY_MINING_PERCENTAGE = 0.5;
 
     protected $table = 'wallets';
@@ -95,6 +98,13 @@ class Mining extends Wallet
         return $this;
 
     }
+    public function grabIncomeHalfMonth() {
+
+        $this->balance_dam += $this->mining_income;
+        $this->mining_income = 0;
+        return $this;
+
+    }
     public function scopeActiveMining($query) {
         
         return $query
@@ -102,6 +112,17 @@ class Mining extends Wallet
             ->whereNotNull('end_mining')
             ->where('mining_balance','>',0);
             
+    }
+
+    public function scopeActiveMiningHalfMonth($query) {
+        $now = Carbon::now();
+        $miningPhase = self::MINING_PHASE_1;
+        return $query
+            ->whereNotNull('started_mining')
+            ->whereNotNull('end_mining')
+            ->whereRaw('mining_balance > 0')
+            ->whereRaw("DATEDIFF(NOW(),started_mining) = ".$miningPhase);
+            //->whereRaw("DATEDIFF(NOW(),started_mining) <= ". $miningPhase);
     }
     public function user() {
         return $this->belongsTo(User::class,'member_id');

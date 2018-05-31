@@ -29,6 +29,9 @@ class EventServiceProvider extends ServiceProvider
         'App\Events\Mining\GrabedIncomeDaily' => [
             'App\Listeners\Mining\GrabedIncomeDaily'
         ],
+        'App\Events\Mining\GrabedIncomeHalfmonth' => [
+            'App\Listeners\Mining\GrabedIncomeHalfmonth'
+        ],
     ];
 
     /**
